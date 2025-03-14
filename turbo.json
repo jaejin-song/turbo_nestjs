@@ -16,7 +16,13 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["POSTGRES_HOST"],
+      "env": [
+        "POSTGRES_HOST",
+        "POSTGRES_PORT",
+        "POSTGRES_USER",
+        "POSTGRES_PASSWORD",
+        "POSTGRES_DB"
+      ],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env.production.local",

@@ -1,3 +1,4 @@
+import { Global, Module } from '@nestjs/common';
 import 'dotenv/config';
 import { drizzle } from 'drizzle-orm/node-postgres';
 
@@ -10,3 +11,15 @@ export const DrizzleClient = drizzle({
     database: process.env.POSTGRES_DB,
   },
 });
+
+@Global()
+@Module({
+  providers: [
+    {
+      provide: 'DATABASE',
+      useValue: DrizzleClient,
+    },
+  ],
+  exports: ['DATABASE'],
+})
+export class DatabaseModule {}
