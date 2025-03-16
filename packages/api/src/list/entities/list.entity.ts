@@ -1,4 +1,4 @@
-export class ListItem {
+export interface ListItem {
   symbol: string;
   name: string;
   exchange: string;

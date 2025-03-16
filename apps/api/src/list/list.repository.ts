@@ -1,12 +1,20 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { DrizzleClient } from 'src/database/database.module';
-import { usersTable } from 'src/database/schema/users';
+import { listTable } from '../database/schema/list';
+import { NodePgDatabase } from 'drizzle-orm/node-postgres';
+import { eq } from 'drizzle-orm';
 
 @Injectable()
 export class ListRepository {
-  constructor(@Inject('DATABASE') private readonly db: typeof DrizzleClient) {}
+  constructor(@Inject('DATABASE') private readonly db: NodePgDatabase) {}
 
   async getList() {
-    return await this.db.select().from(usersTable);
+    return await this.db.select().from(listTable);
+  }
+
+  async getTrendingList() {
+    return await this.db
+      .select()
+      .from(listTable)
+      .where(eq(listTable.trending, true));
   }
 }

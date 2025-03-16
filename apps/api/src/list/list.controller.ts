@@ -6,7 +6,22 @@ export class ListController {
   constructor(private readonly listService: ListService) {}
 
   @Get()
-  async getLIst() {
-    return await this.listService.getList();
+  async getList() {
+    const data = await this.listService.getList();
+
+    return {
+      success: true,
+      data,
+    };
+  }
+
+  @Get('/trending')
+  async getTrendingList() {
+    const data = await this.listService.getTrendingList();
+
+    return {
+      success: true,
+      data,
+    };
   }
 }
