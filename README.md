@@ -1,3 +1,12 @@
+## 개발 환경
+
+- 프론트엔드: Next.js
+- 백엔드: Nest.js
+- 데이터베이스: PostgreSQL
+- 프론트 호스팅: Vercel
+- 백엔드 호스팅: 아마도 aws 프리티어
+- ORM: Drizzle
+
 # Turborepo starter
 
 This is a community-maintained example. If you experience a problem, please submit a pull request with a fix. GitHub Issues will be closed.
